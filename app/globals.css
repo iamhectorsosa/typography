@@ -2,32 +2,96 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+    --primary: 346.8 77.2% 49.8%;
+    --primary-foreground: 355.7 100% 97.3%;
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 346.8 77.2% 49.8%;
+    --radius: 0.3rem;
+  }
+
+  .dark {
+    --background: 20 14.3% 4.1%;
+    --foreground: 0 0% 95%;
+    --card: 24 9.8% 10%;
+    --card-foreground: 0 0% 95%;
+    --popover: 0 0% 9%;
+    --popover-foreground: 0 0% 95%;
+    --primary: 346.8 77.2% 49.8%;
+    --primary-foreground: 355.7 100% 97.3%;
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 0 0% 15%;
+    --muted-foreground: 240 5% 64.9%;
+    --accent: 12 6.5% 15.1%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 85.7% 97.3%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 346.8 77.2% 49.8%;
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+@layer base {
+  /* @link https://utopia.fyi/type/calculator?c=320,18,1.125,1280,20,1.2,10,2,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l&g=s,l,xl,12 */
+
+  :root {
+    --step--2: clamp(0.8681rem, 0.8958rem + -0.0347vi, 0.8889rem);
+    --step--1: clamp(1rem, 0.9861rem + 0.0694vi, 1.0417rem);
+    --step-0: clamp(1.125rem, 1.0833rem + 0.2083vi, 1.25rem);
+    --step-1: clamp(1.2656rem, 1.1875rem + 0.3906vi, 1.5rem);
+    --step-2: clamp(1.4238rem, 1.2984rem + 0.627vi, 1.8rem);
+    --step-3: clamp(1.6018rem, 1.4157rem + 0.9303vi, 2.16rem);
+    --step-4: clamp(1.802rem, 1.5387rem + 1.3166vi, 2.592rem);
+    --step-5: clamp(2.0273rem, 1.6662rem + 1.8052vi, 3.1104rem);
+    --step-6: clamp(2.2807rem, 1.7968rem + 2.4196vi, 3.7325rem);
+    --step-7: clamp(2.5658rem, 1.9281rem + 3.1887vi, 4.479rem);
+    --step-8: clamp(2.8865rem, 2.0571rem + 4.1471vi, 5.3748rem);
+    --step-9: clamp(3.2473rem, 2.1799rem + 5.3373vi, 6.4497rem);
+    --step-10: clamp(3.6532rem, 2.2911rem + 6.8107vi, 7.7397rem);
+  }
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+@layer base {
+  * {
+    @apply border-border;
   }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer base {
+  :root {
+    --flow-margin: 42px;
+  }
+}
+
+.flow > * + * {
+  margin-block-start: var(--flow-margin);
+}
+
+.flow > div > * + * {
+  margin-block-start: calc(var(--flow-margin) / 2);
+}
+
+.flow > div > div > * + * {
+  margin-block-start: calc(var(--flow-margin) / 4);
 }
